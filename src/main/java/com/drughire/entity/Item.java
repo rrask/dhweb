@@ -5,10 +5,11 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
+@SequenceGenerator(name="item_seq", initialValue=1, allocationSize=50)
 public class Item {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="item_seq")
 	private Integer id;
 	private String description;
 	private String title;

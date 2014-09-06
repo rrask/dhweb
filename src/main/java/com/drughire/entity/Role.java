@@ -5,9 +5,10 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
+@SequenceGenerator(name="role_seq", initialValue=1, allocationSize=50)
 public class Role {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="role_seq")
 	private Integer id;
 	private String name;
 	

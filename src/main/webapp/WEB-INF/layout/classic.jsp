@@ -21,6 +21,11 @@
 
 </head>
 <body>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %> 
+ <tilesx:useAttribute name="current"/>
+
+
+  
   <div class="container">
  
        <!-- Static navbar -->
@@ -37,8 +42,11 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href='<spring:url value="/" />'>Home</a></li>
-              <li><a href="#">Info</a></li>
+              <li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/" />'>Home</a></li>
+              <li class="${current == 'users' ? 'active' : ''}"><a href='<spring:url value="/users.html" />'>Users</a></li>
+              <li class="${current == 'register' ? 'active' : ''}"><a href='<spring:url value="/register.html" />'>Register</a></li>
+              <li class="${current == 'login' ? 'active' : ''}"><a href='<spring:url value="/login.html" />'>Login</a></li>
+              <li><a href='<spring:url value="/Logout" />'>Logout</a></li>
               <li><a href="#">News</a></li>
              </ul>
           </div><!--/.nav-collapse -->

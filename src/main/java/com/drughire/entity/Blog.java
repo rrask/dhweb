@@ -5,10 +5,10 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
+@SequenceGenerator(name="blog_seq", initialValue=1, allocationSize=50)
 public class Blog {
-
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="blog_seq")
 	private Integer id;
 	private String name;
 	private String url;
