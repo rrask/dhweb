@@ -5,7 +5,11 @@
 	<artifactId>dhweb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-
+	<properties>
+		<org.springframework.version>4.0.2.RELEASE</org.springframework.version>
+		<apache.tiles>3.0.4</apache.tiles>
+		<spring.security.version>3.2.3.RELEASE</spring.security.version>
+	</properties>
 	<dependencies>
 
 		<dependency>
@@ -181,12 +185,13 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 	</dependencies>
-	<properties>
-		<org.springframework.version>4.0.2.RELEASE</org.springframework.version>
-		<apache.tiles>3.0.4</apache.tiles>
-		<spring.security.version>3.2.5.RELEASE</spring.security.version>
-	</properties>
+
 	<build>
 
 		<plugins>

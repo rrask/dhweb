@@ -28,6 +28,8 @@
 
 	<jdbc:embedded-database type="HSQL" id="dataSource" />
 
+ 	<import resource="security.xml" /> 
+	
 	<bean
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		id="entityManagerFactory">
@@ -44,11 +46,9 @@
 			<bean class="org.hibernate.jpa.HibernatePersistenceProvider" />
 		</property>
 	</bean>
-
-
-	<import resource="security.xml" />
-
-
-
+	
 
 </beans>
+
+
+

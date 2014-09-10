@@ -13,7 +13,7 @@ public class Blog {
 	private String name;
 	private String url;
 	
-	@OneToMany(mappedBy="blog")
+	@OneToMany(mappedBy="blog",cascade=CascadeType.REMOVE)
 	private List<Item> items;
 	
 	public List<Item> getItems() {

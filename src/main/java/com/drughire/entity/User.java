@@ -5,16 +5,26 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name="user_seq", initialValue=1, allocationSize=50)
+@SequenceGenerator(name="user_seq", initialValue=1, allocationSize=1)
+@Table(name = "app_user")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user_seq")
     private Integer id;
-	private String Name;
+	private String name;
 	private String password;
 	private String email;
+	private Boolean enabled;
 	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -23,7 +33,7 @@ public class User {
 		this.email = email;
 	}
 
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user",cascade=CascadeType.REMOVE)
 	private List<Blog> blogs;
 	
 	
@@ -49,11 +59,11 @@ public class User {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getPassword() {

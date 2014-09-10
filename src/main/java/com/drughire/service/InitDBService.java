@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -38,20 +39,19 @@ public class InitDBService {
 	@PostConstruct
 	public void init(){
 		
-		System.out.println("Rask INIT service");
-		Role roleUser = new Role();
-		roleUser.setName("Role_User");
 		
+		Role roleUser = new Role();
+		roleUser.setName("ROLE_USER");
 		roleRepository.save(roleUser);
-		System.out.println("Rask INIT A");
 		Role roleAdmin = new Role();
-		roleAdmin.setName("Admin_User");
-	
+		roleAdmin.setName("ROLE_ADMIN");
 		roleRepository.save(roleAdmin);
-		System.out.println("Rask INIT B");
+		
 		User userAdmin = new User();
-		userAdmin.setName("Admin");
-		userAdmin.setPassword("Admin");
+		userAdmin.setName("admin");
+		userAdmin.setEnabled(true);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		userAdmin.setPassword(encoder.encode("admin"));
 		ArrayList<Role> roles = new ArrayList<Role>();
 		roles.add(roleUser);
 		roles.add(roleAdmin);
